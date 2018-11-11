@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="ComputerShop.View.DataView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ComputerShop.View"
+             xmlns:viewModel="clr-namespace:ComputerShop.ViewModel"
+             xmlns:vml="clr-namespace:ComputerShop.VML"
+             xmlns:data="clr-namespace:ComputerShop.Core.Models;assembly=ComputerShop.Core"
+             vml:ViewModelLocator.AutoHookedUpViewModel="true"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="1000">
+    <Grid Margin="20,10" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Label Grid.Column="0" Content="Computer Parts Shop" FontSize="20" Padding="0,30,0,0" FontWeight="Bold" FontFamily="Tahoma" FontStyle="Italic"/>
+            <Button Command="{Binding AddUserCommand}" Grid.Column="1" x:Name="btnAddUser" Content="Add User" FontFamily="Tahoma" FontWeight="Bold" Width="auto" Margin="5,0" Height="22"/>
+            <Button Command="{Binding ProfileCommand}" Grid.Column="2" x:Name="btnProfil" Content="My Profile" Margin="5,0" FontFamily="Tahoma" FontWeight="Bold" Width="80" Height="22"/>
+            <Button Command="{Binding LogOutCommand}" Grid.Column="3" x:Name="btnLogOut" Content="Log Out" Margin="5,0" FontFamily="Tahoma" FontWeight="Bold" Width="80" Height="22"/>
+        </Grid>
+
+        <DataGrid Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True" Height="Auto" VerticalAlignment="Top" SelectedItem="{Binding SelectedStockComponent}" ItemsSource="{Binding StockComponents}" Width="Auto" Margin="10,0" IsSynchronizedWithCurrentItem="True">
+            <DataGrid.InputBindings>
+                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding ViewItemCommand}"/>
+            </DataGrid.InputBindings>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Component" Binding="{Binding Type}" Width="*"/>
+                <DataGridTextColumn Header="Description" Binding="{Binding Path=M_Component.Model}" Width="*"/>
+                <DataGridTextColumn Header="Count" Binding="{Binding Count}" Width="*"/>
+                <DataGridTextColumn Header="Price" Binding="{Binding Path=M_Component.Price}" Width="*"/>
+                <DataGridTextColumn Header="Location" Binding="{Binding PhysicalLocation}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Command="{Binding AddItemCommand}" x:Name="btnAddItem" Grid.Column="0" Content="Add Item" FontFamily="Tahoma" FontWeight="Bold" Width="Auto" Margin="20,0" Height="25"/>
+            <Button Command="{Binding UndoCommand}" x:Name="btnUndoRedo" Grid.Column="1" Content="Undo" FontFamily="Tahoma" FontWeight="Bold" Width="Auto" Margin="20,0" Height="25"/>
+            <Button Command="{Binding DuplicateCommand}" x:Name="btnDuplicate" Grid.Column="2" Content="Duplicate" FontFamily="Tahoma" FontWeight="Bold" Width="Auto" Margin="20,0" Height="25"/>
+            <Button Command="{Binding RefreshCommand}" x:Name="btnRefresh" Grid.Column="3" Content="Refresh" FontFamily="Tahoma" FontWeight="Bold" Width="Auto" Margin="20,0" Height="25"/>
+            <Button Command="{Binding DeleteCommand}" x:Name="btnDelete" Grid.Column="4" Content="Delete" FontFamily="Tahoma" FontWeight="Bold" Width="Auto" Margin="20,0" Height="25"/>
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+        </Grid>
+        
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Content="Search by Location:" FontSize="24" FontFamily="Tahoma" Margin="50,10,0,0"/>
+            <TextBox x:Name="tbUsername" Grid.Column="1" Text="{Binding SearchText}" FontSize="20" FontFamily="Tahoma" Margin="10.0" FontWeight="Bold" Width="Auto" Height="25"/>
+            <Button Command="{Binding SearchCommand}" x:Name="btnSearch" Grid.Column="2" Content="Search" FontFamily="Tahoma" FontWeight="Bold" Width="Auto" Margin="80,0" Height="25"/>
+
+        </Grid>
+
+        <Grid Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="{Binding LogMsg}" Grid.Column="0" Width="Auto" FontSize="10" Foreground="Black" Background="White" BorderBrush="Black" BorderThickness="1" />
+            <Button Grid.Column="1" Width="Auto" Height="Auto" Content="L" FontWeight="Bold" Command="{Binding LogCommand}"/>
+        </Grid>
+
+    </Grid>
+</UserControl>

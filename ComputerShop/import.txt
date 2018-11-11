@@ -1,0 +1,12 @@
+LcPower | Quantum-X24p |Gaming | 231,42 |
+LcPower | Work-24cAs | WorkStation | 831,42 |
+Seagate | Baracuda | 500 | HDD | 331,42 |
+Samsung	| Sleep	| 128 | SSD | 831,42 |
+Kingston | Cardinal | 4 | DDR3 | 531,42 |
+Kingston | HyperX | 8 | DDR4 | 431,42 |
+Intel | I7 | 6 | 3.5 | 111,42 |
+AMD | Ryzen | 8 | 4.2 | 221,32 |
+Nvidia | GTX1050Ti | 4 | 256 | 251,42 |
+MSI | R9-270x | 2 | 125 | 2321,42 |
+Asus | ARock | Intel | 2351,62 |
+Gigabyte | UltraDurable | AM3 | 221,42

@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="ComputerShop.View.AddOldItemView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ComputerShop.View"
+              xmlns:viewModel="clr-namespace:ComputerShop.ViewModel"
+             xmlns:vml="clr-namespace:ComputerShop.VML"
+             xmlns:data="clr-namespace:ComputerShop.Core.Models;assembly=ComputerShop.Core"
+             vml:ViewModelLocator.AutoHookedUpViewModel="true"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.ColumnSpan="3" Margin="30" Content="Add New Stck Component" FontSize="55" FontWeight="Bold" FontStyle="Italic"/>
+        <Label Grid.Row="1" Grid.Column="1" Content="Count:" FontSize="25" FontWeight="Bold" Margin="56,10"/>
+        <TextBox Text="{Binding Count}" Grid.Row="1" Grid.Column="2" FontSize="20" Width="Auto" Margin="20"/>
+        <Label Grid.Row="2" Grid.Column="1" Content="Location:" FontSize="25" FontWeight="Bold" Margin="56,10"/>
+        <TextBox Text="{Binding Location}" Grid.Row="2" Grid.Column="2" FontSize="20" Width="Auto" Margin="20"/>
+        <Label Grid.Row="3" Grid.Column="1" Content="Component:" FontSize="25" FontWeight="Bold" Margin="56,10,30,10"/>
+
+        <ComboBox x:Name="cbxTypee" SelectedItem="{Binding SelectedComponent}" ItemsSource="{Binding ComponentList}" DisplayMemberPath="Model" Grid.Row="3" Grid.Column="2" FontSize="16" Width="Auto" Margin="20"/>
+        <Button Command="{Binding AddItemComand}" Grid.Row="6" Grid.ColumnSpan="2" Width="Auto" Margin="160,20" Content="Add Item" FontWeight="Bold"/>
+        <Button Command="{Binding CancelCommand}" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" Width="Auto" Margin="160,20" Content="Cancel" FontWeight="Bold"/>
+        <Label Foreground="Black" Background="White" BorderBrush="Gray" FontSize="10" BorderThickness="1" Grid.Row="7" Grid.ColumnSpan="4" Content="{Binding MsgLabel}"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,47 @@
+﻿<Window x:Class="ComputerShop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ComputerShop"
+        xmlns:views="clr-namespace:ComputerShop.View"
+        xmlns:viewModel="clr-namespace:ComputerShop.ViewModel"
+        mc:Ignorable="d"
+        Title="Computer Parts" Height="600" Width="1000">
+    <!--<Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>-->
+
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewModel:StartViewModel}">
+            <views:StartView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModel:DataViewModel}">
+            <views:DataView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModel:NewUserViewModel}">
+            <views:NewUserView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModel:ProfileViewModel}">
+            <views:ProfileView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModel:AddItemViewModel}">
+            <views:AddItemView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModel:AddOldItemViewModel}">
+            <views:AddOldItemView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModel:ItemDetailsViewModel}">
+            <views:ItemDetailsView/>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <ContentControl Content="{Binding CurrentViewModel}"/>
+    </Grid>
+</Window>

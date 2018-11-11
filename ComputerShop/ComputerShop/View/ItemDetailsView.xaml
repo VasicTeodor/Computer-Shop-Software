@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="ComputerShop.View.ItemDetailsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ComputerShop.View"
+             xmlns:viewModel="clr-namespace:ComputerShop.ViewModel"
+             xmlns:vml="clr-namespace:ComputerShop.VML"
+             xmlns:data="clr-namespace:ComputerShop.Core.Models;assembly=ComputerShop.Core"
+             vml:ViewModelLocator.AutoHookedUpViewModel="true"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.ColumnSpan="3" Margin="30" Content="Stck Component Details" FontSize="55" FontWeight="Bold" FontStyle="Italic"/>
+        <Label Grid.Row="1" Grid.Column="0" Content="Model:" FontSize="25" FontWeight="Bold" Margin="56,10"/>
+        <TextBox x:Name="tbxModel" Text="{Binding Model}" Grid.Row="1" Grid.Column="1" FontSize="20" Width="Auto" Margin="20"/>
+        <Label Grid.Row="2" Grid.Column="0" Content="Name:" FontSize="25" FontWeight="Bold" Margin="56,10"/>
+        <TextBox x:Name="tbxName" Text="{Binding Name}" Grid.Row="2" Grid.Column="1" FontSize="20" Width="Auto" Margin="20"/>
+        <Label Grid.Row="3" Grid.Column="0" Content="Count:" FontSize="25" FontWeight="Bold" Margin="56,10"/>
+        <TextBox x:Name="tbxCount" Text="{Binding Count}" Grid.Row="3" Grid.Column="1" FontSize="20" Width="Auto" Margin="20"/>
+        <Label Grid.Row="4" Grid.Column="0" Content="Location:" FontSize="25" FontWeight="Bold" Margin="56,10"/>
+        <TextBox x:Name="tbxLocation" Text="{Binding Location}" Grid.Row="4" Grid.Column="1" FontSize="20" Width="Auto" Margin="20"/>
+        <Label Grid.Row="5" Grid.Column="0" Content="Type:" FontSize="25" FontWeight="Bold" Margin="56,10"/>
+        
+        <Label Grid.Row="5" Grid.Column="2" Content="Price:" FontSize="25" FontWeight="Bold" Margin="56,10"/>
+        <TextBox x:Name="tbxPrice" Text="{Binding Price}" Grid.Row="5" Grid.Column="3" FontSize="20" Width="Auto" Margin="20"/>
+
+        <!--Case-->
+        <Label x:Name="lblCase" Grid.Row="1" Grid.Column="2" Content="Case Type:" FontSize="25" FontWeight="Bold" Margin="20,10" Visibility="Hidden"/>
+
+        <!--CPU-->
+        <Label x:Name="lblCpu1" Grid.Row="1" Grid.Column="2" Content="Clock Speed:" FontSize="25" FontWeight="Bold" Margin="20,10" Visibility="Hidden"/>
+        <Label x:Name="lblCpu2" Grid.Row="2" Grid.Column="2" Content="Cores Number:" FontSize="25" FontWeight="Bold" Margin="20,10" Visibility="Hidden"/>
+
+        <!--GPU-->
+        <Label x:Name="lblGpu1" Grid.Row="1" Grid.Column="2" Content="GPU Memory:" FontSize="25" FontWeight="Bold" Margin="20,10" Visibility="Hidden"/>
+        <Label x:Name="lblGpu2" Grid.Row="2" Grid.Column="2" Content="GPU Speed:" FontSize="25" FontWeight="Bold" Margin="20,10" Visibility="Hidden"/>
+
+        <!--HDD-->
+        <Label x:Name="lblMemory1" Grid.Row="1" Grid.Column="2" Content="HDD Type:" FontSize="25" FontWeight="Bold" Margin="20,10" Visibility="Hidden"/>
+        <Label x:Name="lblMemory2" Grid.Row="2" Grid.Column="2" Content="HDD Size:" FontSize="25" FontWeight="Bold" Margin="20,10" Visibility="Hidden"/>
+
+        <!--Motherboard-->
+        <Label x:Name="lblMb" Grid.Row="1" Grid.Column="2" Content="Socket:" FontSize="25" FontWeight="Bold" Margin="20,10" Visibility="Hidden"/>
+
+        <!--RAM-->
+        <Label x:Name="lblRam1" Grid.Row="1" Grid.Column="2" Content="RAM Type:" FontSize="25" FontWeight="Bold" Margin="20,10" Visibility="Hidden"/>
+        <Label x:Name="lblRam2" Grid.Row="2" Grid.Column="2" Content="RAM Size:" FontSize="25" FontWeight="Bold" Margin="20,10" Visibility="Hidden"/>
+
+        <!--INPUTS-->
+        <TextBox x:Name="tbInput1" Text="{Binding InputOne}" Grid.Row="1" Grid.Column="3" FontSize="20" Width="Auto" Margin="0,20,50,20" Visibility="Hidden"/>
+        <TextBox x:Name="tbInput2" Text="{Binding InputTwo}" Grid.Row="2" Grid.Column="3" FontSize="20" Width="Auto" Margin="0,20,50,20" Visibility="Hidden"/>
+
+        <TextBox x:Name="cbxTypee" IsReadOnly="True" Text="{Binding ComponentType}" Grid.Row="5" Grid.Column="1" FontSize="16" Width="Auto" Margin="20"/>
+        <Button Grid.Row="6" Width="Auto" Margin="20" Content="Edit" FontWeight="Bold" Click="Button_Click"/>
+        <Button Command="{Binding AddItemComand}" Grid.Row="6" Grid.Column="1"  Width="Auto" Margin="20" Content="Save Changes" FontWeight="Bold"/>
+        <Button Command="{Binding RefreshCommand}" Grid.Row="6" Grid.Column="2" Width="Auto" Margin="20" Content="Refresh" FontWeight="Bold"/>
+        <Button Command="{Binding CancelCommand}" Grid.Row="6" Grid.Column="3" Width="Auto" Margin="20" Content="Cancel" FontWeight="Bold"/>
+        <Label Foreground="Black" Background="White" BorderBrush="Gray" FontSize="10" BorderThickness="1" Grid.Row="7" Grid.ColumnSpan="4" Content="{Binding MsgLabel}"/>
+    </Grid>
+</UserControl>
